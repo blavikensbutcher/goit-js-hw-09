@@ -26,7 +26,8 @@ const options = {
     onClose(selectedDates) {
         selectors.startBtn.disabled = true;
         if(selectedDates[0] <= Date.now()) {
-            window.alert('Please choose a date in the future')
+            // window.alert('Please choose a date in the future');
+            Notiflix.Notify.failure('Please choose a date in the future');
         } else {
             selectors.startBtn.disabled = false;
             const today = new Date();
@@ -58,7 +59,8 @@ function convertMs(ms) {
   }
 
   function handleStart() {
-
+    selectors.startBtn.disabled = true;
+    
     intervalId = setInterval(() => {
         selectors.days.textContent = String(convertMs(selectedTime).days).padStart(2, "0");
         selectors.hours.textContent = String(convertMs(selectedTime).hours).padStart(2, "0");
@@ -67,9 +69,10 @@ function convertMs(ms) {
         selectedTime = selectedTime - 1000;
         if (selectedTime <= 0) {
             clearInterval(intervalId)
+            selectors.startBtn.disabled = false;
         };
     }, 1000)
-
+        
     
 
  
