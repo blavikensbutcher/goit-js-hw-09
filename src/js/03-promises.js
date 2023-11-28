@@ -9,7 +9,6 @@ const selectors = {
 
 let delay = 0;
 let step = 0;
-let position = 0;
 
 selectors.form.addEventListener('submit', handleSubmit)
 
